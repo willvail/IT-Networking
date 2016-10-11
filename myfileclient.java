@@ -3,7 +3,6 @@ import java.net.*;
 import java.util.Scanner;
 /*
 * @author William Vail(100941960), Christian Moreau(100934980)
-* http://www.rgagnon.com/javadetails/java-0542.html
 *
 */
 
@@ -42,17 +41,12 @@ public class myfileclient {
             InputStream is = socket.getInputStream();
 
             out.println(FILE);
-            System.out.println("Did we at least make it here?");
             int bytesRead = is.read(mybytearray, 0, mybytearray.length);
-            System.out.println("How about here?");
             int current = bytesRead;
             System.out.println("This is current:" + current);
-            //////////// the great divide
             while ((fromServer = in.readLine()) != null){       //if things exist, close sockets
-                System.out.println("Here, we made it fam");
                 System.out.println("Server: " + fromServer);
                 bytesRead = is.read(mybytearray, current, (mybytearray.length - current));
-                System.out.println("Did we make it here?");
                 if(bytesRead >= 0) current += bytesRead;
 
                 if (fromServer.equals("Bye."))
